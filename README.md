@@ -64,3 +64,7 @@ Solution credit: http://robertheaton.com/2013/07/22/how-to-hack-a-rails-app-usin
 
 
 ## Building/Running the Challenge
+
+## Flag
+
+763d661f088cbd9e83ed2d3f6c4865cca6f1d284
