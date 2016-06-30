@@ -2,9 +2,7 @@
 # sure you lock down to a specific version, not to `latest`!
 # See https://github.com/phusion/passenger-docker/blob/master/Changelog.md for
 # a list of version numbers.
-FROM phusion/passenger-ruby19
-# Or, instead of the 'full' variant, use one of these:
-#FROM phusion/passenger-ruby19:
+FROM phusion/passenger-ruby19:latest
 
 # Set correct environment variables.
 ENV HOME /root
@@ -12,12 +10,18 @@ ENV HOME /root
 # Use baseimage-docker's init process.
 CMD ["/sbin/my_init"]
 
-# ...put your own build instructions here...
+RUN rm -f /etc/service/nginx/down
 RUN rm /etc/nginx/sites-enabled/default
-ADD webapp.conf /etc/nginx/sites-enabled/webapp.conf
+
+ADD rails-env.conf /etc/nginx/main.d/rails-env.conf
+
+WORKDIR /tmp
+ADD Gemfile /tmp/
+ADD Gemfile.lock /tmp/
+RUN bundle install
 RUN mkdir /home/app/webapp
-RUN ...commands to place your web app in /home/app/webapp...
-RUN ruby-switch 1.9.3-p0
+ADD . /home/app/webapp
+RUN chown -R app:app /home/app/webapp
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
