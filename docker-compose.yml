@@ -1,0 +1,13 @@
+db:
+  image: postgres
+  restart: unless-stopped
+  ports:
+    - "5432:5432"
+web:
+  build: ./
+  command: /sbin/my_init
+  ports:
+    - "80:80"
+  links:
+    - db:postgres
+  restart: unless-stopped

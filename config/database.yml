@@ -21,6 +21,8 @@ test:
 production:
   adapter: postgresql
   database: messaging_app_database
-  username: ubuntu
+  username: postgres
+  password:
+  host: db
   pool: 5
   timeout: 5000
