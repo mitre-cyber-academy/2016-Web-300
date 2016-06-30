@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.9'
-gem 'unicorn'
+gem 'rails', '3.2.11'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -44,7 +43,7 @@ gem 'jquery-rails'
 # gem 'debugger'
 
 # Authlogic
-gem "authlogic", :git => 'https://github.com/binarylogic/authlogic.git', :ref => 'a72ed4949986aa935d00fec92727d819a6b4aa96'
+gem "authlogic"
 
 # Haml
 gem "haml"
