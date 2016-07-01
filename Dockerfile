@@ -7,15 +7,26 @@ FROM phusion/passenger-ruby19:latest
 # Set correct environment variables.
 ENV HOME /root
 ENV RAILS_ENV production
+ENV DEBIAN_FRONTEND noninteractive
 
 # Use baseimage-docker's init process.
 CMD ["/sbin/my_init"]
+
+RUN apt-get update
+RUN apt-get install -y inotify-tools
 
 RUN rm -f /etc/service/nginx/down
 RUN rm /etc/nginx/sites-enabled/default
 
 ADD rails-env.conf /etc/nginx/main.d/rails-env.conf
+ADD postgres-env.conf /etc/nginx/main.d/postgres-env.conf
 ADD webapp.conf /etc/nginx/sites-enabled/webapp.conf
+
+ADD keyleak-watchpublic /usr/bin/keyleak-watchpublic
+RUN chmod 755 /usr/bin/keyleak-watchpublic
+RUN mkdir /etc/service/watchpublic
+ADD watchpublic /etc/service/watchpublic/run
+RUN chmod 755 /etc/service/watchpublic/run
 
 WORKDIR /tmp
 ADD Gemfile /tmp/
