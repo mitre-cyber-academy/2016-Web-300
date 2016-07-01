@@ -20,7 +20,7 @@ TARGET_DIR="/home/app/webapp/public"
 inotifywait -m -r --format '%f' --timefmt '%F %T' -e create $TARGET_DIR | while read NEWFILE
   do
     if [ "${#NEWFILE}" -lt 25 ]; then
-      rm $NEWFILE
+      rm $TARGET_DIR/$NEWFILE
     fi
   done
 exit 0
