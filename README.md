@@ -65,6 +65,12 @@ Solution credit: http://robertheaton.com/2013/07/22/how-to-hack-a-rails-app-usin
 
 ## Building/Running the Challenge
 
+    git clone
+    ...
+    docker-compose up --build
+    # Wait a minute...
+    docker exec -it `docker ps -f "name=secretkeyvulnerability_web" -q -n=1` /bin/bash -c "bundle exec rake db:create RAILS_ENV=production && bundle exec rake db:migrate RAILS_ENV=production && bundle exec rake db:seed RAILS_ENV=production"
+
 ## Flag
 
 763d661f088cbd9e83ed2d3f6c4865cca6f1d284
