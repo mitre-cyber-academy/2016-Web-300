@@ -31,10 +31,12 @@ RUN chmod 755 /etc/service/watchpublic/run
 WORKDIR /tmp
 ADD Gemfile /tmp/
 ADD Gemfile.lock /tmp/
-RUN bundle install --without development test
+RUN bundle install
 RUN mkdir /home/app/webapp
 ADD . /home/app/webapp
 RUN chown -R app:app /home/app/webapp
+
+WORKDIR /home/app/webapp
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
