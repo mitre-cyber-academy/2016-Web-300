@@ -1,8 +1,6 @@
 db:
   image: postgres
   restart: unless-stopped
-  ports:
-    - "5432:5432"
 web:
   build: ./
   command: /sbin/my_init

