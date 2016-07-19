@@ -73,6 +73,8 @@ Solution credit: http://robertheaton.com/2013/07/22/how-to-hack-a-rails-app-usin
 
 **Competitors will also need to be informed that the file they create needs to have a name longer than 25 characters.**
 
+This project uses the new format of the docker-compose file, which must be installed from https://github.com/docker/compose/releases and requires a version 1.7 or greater.
+
 ## Flag
 
 763d661f088cbd9e83ed2d3f6c4865cca6f1d284

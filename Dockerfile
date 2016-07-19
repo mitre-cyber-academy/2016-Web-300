@@ -36,6 +36,10 @@ RUN mkdir /home/app/webapp
 ADD . /home/app/webapp
 RUN chown -R app:app /home/app/webapp
 
+RUN rm /etc/container_environment.sh
+
+RUN rm -rf /home/app/webapp/public
+
 WORKDIR /home/app/webapp
 
 # Clean up APT when done.
