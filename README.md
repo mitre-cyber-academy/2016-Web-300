@@ -64,23 +64,21 @@ Solution credit: http://robertheaton.com/2013/07/22/how-to-hack-a-rails-app-usin
 
 
 ## Building/Running the Challenge
- ** Step 1: Setting up
+ Step 1: Setting up
     git clone
     ...
     docker-compose up --build -d
     # Wait a minute...
     docker-compose run  --rm web /bin/bash -c "bundle exec rake db:create RAILS_ENV=production && bundle exec rake db:schema:load RAILS_ENV=production && bundle exec rake db:seed RAILS_ENV=production"
- ** step 2: change the docker-compose.yml ports to "3000:80"
-     ports:
-      - "80:80" to "3000:80"
- ** Step 3: Take the above code and put it into a .rb file and run it 
-     change flag.txt to a name longer that 25 characters:
-     erb.instance_variable_set(:@src, 'thing = Message.first.body; system("echo #{thing} >> public/flag.txt");')
-     
-     change url: from 80 to 3000
-     
- ** Step 4: Go to the browser and type localhost:3000/your long name and see the key
     
+ Step 2: change the docker-compose.yml ports to "3000:80"
+ 
+ Step 3: Take the above code and put it into a .rb file and run it 
+     change flag.txt to a name longer that 25 characters
+     change url: from 80 to 3000 
+     
+  Step 4: Go to the browser and type localhost:3000/your long name and see the key
+ 
 **Competitors will also need to be informed that the file they create needs to have a name longer than 25 characters.**
 
 This project uses the new format of the docker-compose file, which must be installed from https://github.com/docker/compose/releases and requires a version 1.7 or greater.
