@@ -65,6 +65,7 @@ Solution credit: http://robertheaton.com/2013/07/22/how-to-hack-a-rails-app-usin
 
 ## Building/Running the Challenge
 Step 1: Setting up
+
     git clone
     ...
     docker-compose up --build -d
@@ -74,6 +75,7 @@ Step 1: Setting up
 Step 2: change the docker-compose.yml ports to "3000:80"
  
 Step 3: Take the above code and put it into a .rb file and run it 
+
      change flag.txt to a name longer that 25 characters
      change url: from 80 to 3000 
      
