@@ -69,7 +69,7 @@ Solution credit: http://robertheaton.com/2013/07/22/how-to-hack-a-rails-app-usin
     ...
     docker-compose up --build -d
     # Wait a minute...
-    docker-compose run  --rm web /bin/bash -c "bundle exec rake db:create RAILS_ENV=production && bundle exec rake db:migrate RAILS_ENV=production && bundle exec rake db:seed RAILS_ENV=production"
+    docker-compose run  --rm web /bin/bash -c "bundle exec rake db:create RAILS_ENV=production && bundle exec rake db:schema:load RAILS_ENV=production && bundle exec rake db:seed RAILS_ENV=production"
 
 **Competitors will also need to be informed that the file they create needs to have a name longer than 25 characters.**
 

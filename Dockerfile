@@ -34,7 +34,12 @@ ADD Gemfile.lock /tmp/
 RUN bundle install
 RUN mkdir /home/app/webapp
 ADD . /home/app/webapp
+
+RUN touch /home/app/webapp/tmp/cache/assets/HOLDPERMS
+
 RUN chown -R app:app /home/app/webapp
+
+VOLUME /home/app/webapp/tmp/cache/assets
 
 RUN rm /etc/container_environment.sh
 

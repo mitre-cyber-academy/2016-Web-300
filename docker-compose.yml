@@ -24,7 +24,6 @@ services:
       - /dev/xconsole
       - /home/app/webapp/public:rw,noexec,nosuid,mode=1777
       - /home/app/webapp/.sass-cache:rw,noexec,nosuid,mode=1777
-      - /home/app/webapp/tmp:rw,noexec,nosuid,mode=1777
       - /etc/container_environment
       - /etc/service/syslog-forwarder/supervise
       - /etc/service/syslog-ng/supervise
@@ -38,3 +37,4 @@ services:
       - /home/app/webapp/log
       - ./container_environment.sh:/etc/container_environment.sh
       - ./container_environment.json:/etc/container_environment.json
+      - /home/app/webapp/tmp/cache/assets
